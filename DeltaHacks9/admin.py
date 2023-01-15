@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import BigBusiness
+from .models import BigBuisness
 
-admin.site.register(BigBusiness)
+admin.site.register(BigBuisness)
