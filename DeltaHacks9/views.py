@@ -5,6 +5,7 @@ from .serializers import DeltaSerializerSmall
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+import consume
 
 @api_view(['GET', 'POST'])
 def business_list_big(request, format=None):
@@ -56,10 +57,18 @@ def business_list_small(request, format=None):
         return Response(serializer.data)
 
     if request.method == 'POST':
-        serializer = DeltaSerializerSmall(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        response = request.data
+        response = consume.RemoveBigCompanies(response)
+        upload = []
+        for item in response:
+            upload.append({'name': item['name'], 'photos': item['photos'], 'rating': item['rating']})
+
+        print(upload)
+        for item in range(len(upload)):
+            serializer = DeltaSerializerSmall(data=upload[item])
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def business_details_small(request, id, format=None):
