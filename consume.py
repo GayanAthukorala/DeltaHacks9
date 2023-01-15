@@ -2,7 +2,6 @@ import requests
 
 def RemoveBigCompanies(companies):
     url = 'http://127.0.0.1:8000/DeltaHacks9Big/'
-    companies = [{'id': 1, 'name': 'A&W', 'url': 9}, {'id': 2, 'name': 'd', 'url': 4}]
     response = requests.get(url)
     list_of_big_business = response.json()
     for business in list_of_big_business:
@@ -15,3 +14,5 @@ def RemoveBigCompanies(companies):
 
     return companies
 
+def DeleteAllSmallBusiness():
+    url = 'http://127.0.0.1:8000/DeltaHacks9Small/'
