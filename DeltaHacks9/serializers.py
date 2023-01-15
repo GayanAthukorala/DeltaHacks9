@@ -10,4 +10,4 @@ class DeltaSerializerBig(serializers.ModelSerializer):
 class DeltaSerializerSmall(serializers.ModelSerializer):
     class Meta:
         model = SmallBusiness
-        fields = ['id', 'name', 'url']
+        fields = ['id', 'name', 'photos', 'rating']
