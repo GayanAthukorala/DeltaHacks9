@@ -1,28 +1,29 @@
-from django.http import JsonResponse
 from .models import BigBuisness
-from .serializers import DeltaSerializer
+from .models import SmallBusiness
+from .serializers import DeltaSerializerBig
+from .serializers import DeltaSerializerSmall
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
 @api_view(['GET', 'POST'])
-def business_list(request, format=None):
+def business_list_big(request, format=None):
     if request.method == 'GET':
-        #Get names of all small businesses
+        #Get names of all big businesses
         businesses = BigBuisness.objects.all()
 
         #Serialize them
-        serializer = DeltaSerializer(businesses, many=True)
+        serializer = DeltaSerializerBig(businesses, many=True)
         return Response(serializer.data)
 
     if request.method == 'POST':
-        serializer = DeltaSerializer(data=request.data)
+        serializer = DeltaSerializerBig(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def business_detail(request, id, format=None):
+def business_details_big(request, id, format=None):
 
     try:
         business = BigBuisness.objects.get(pk=id)
@@ -30,11 +31,50 @@ def business_detail(request, id, format=None):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = DeltaSerializer(business)
+        serializer = DeltaSerializerBig(business)
         return Response(serializer.data)
 
     elif request.method == 'POST':
-        serializer = DeltaSerializer(business, data=request.data)
+        serializer = DeltaSerializerBig(business, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        business.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET', 'POST'])
+def business_list_small(request, format=None):
+    if request.method == 'GET':
+        #Get names of all big businesses
+        businesses = SmallBusiness.objects.all()
+
+        #Serialize them
+        serializer = DeltaSerializerSmall(businesses, many=True)
+        return Response(serializer.data)
+
+    if request.method == 'POST':
+        serializer = DeltaSerializerSmall(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def business_details_small(request, id, format=None):
+
+    try:
+        business = SmallBusiness.objects.get(pk=id)
+    except SmallBusiness.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = DeltaSerializerSmall(business)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = DeltaSerializerSmall(business, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
