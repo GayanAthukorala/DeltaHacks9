@@ -23,3 +23,4 @@ The project is made using:
 
 ## Features Future
 * Scale the large corporations list to include more information, past the top 100 across the world
+* Add an option for adjusting the radius of the search as well as desired price range.
