@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import time
+>>>>>>> master
 from .models import BigBuisness
 from .models import SmallBusiness
 from .serializers import DeltaSerializerBig
@@ -5,7 +9,10 @@ from .serializers import DeltaSerializerSmall
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+<<<<<<< HEAD
 import consume
+=======
+>>>>>>> master
 
 @api_view(['GET', 'POST'])
 def business_list_big(request, format=None):
@@ -57,6 +64,7 @@ def business_list_small(request, format=None):
         return Response(serializer.data)
 
     if request.method == 'POST':
+
         response = request.data
         response = consume.RemoveBigCompanies(response)
         upload = []
@@ -70,6 +78,10 @@ def business_list_small(request, format=None):
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+        serializer = DeltaSerializerSmall(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 @api_view(['GET', 'PUT', 'DELETE'])
 def business_details_small(request, id, format=None):
 
@@ -83,6 +95,11 @@ def business_details_small(request, id, format=None):
         return Response(serializer.data)
 
     elif request.method == 'POST':
+
+        print(request)
+        response = request.data
+        print(response)
+
         serializer = DeltaSerializerSmall(business, data=request.data)
         if serializer.is_valid():
             serializer.save()
