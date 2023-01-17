@@ -1,4 +1,4 @@
-# DeltaHacks9
+# LocalLove - DeltaHacks 9
 
 This is our project for DeltaHacks 9 "The Hackathon for change" created by Ahren, Rhea, Gayan, and Youtso.
 Checkout our devpost here: https://devpost.com/software/local-love 
@@ -18,8 +18,14 @@ Our app helps connect consumer to local retailers/restuarants by filtering out l
 - HTML
 - CSS
 
-## Current Features
+## Screenshots
+Landing Page:
+![image](https://user-images.githubusercontent.com/73492549/212925425-8a95c9c5-3d77-4788-aefd-9dd6062322d9.png)
 
-- Able to add and remove large/small businesses from a Django database
-- Uses the google maps API to display small businesses that sell the food you are looking for within a small radius relative to your current location
-- Able to remove all large scale corporations from a Json dictionary by matching the names of the corporations with the object key names in the dictionary
+Search Page Before Searching: 
+![image](https://user-images.githubusercontent.com/73492549/212925721-839e432f-7218-4fbe-8310-6176741bba5e.png)
+
+Search Page After Searching:
+![image](https://user-images.githubusercontent.com/73492549/212925941-c6fc1fa5-f6a5-4edf-91c1-85f463e94502.png)
+
+
