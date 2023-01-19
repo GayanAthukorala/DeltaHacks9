@@ -5,7 +5,7 @@ Checkout our devpost here: https://devpost.com/software/local-love
 
 ## Description
 
-Our app helps connect consumer to local retailers/restuarants by filtering out large corporations when they searche for goods and services
+Our app helps connect consumer to local retailers/restuarants by filtering out large corporations when they search for goods and services
 
 ## Languages, Frameworks, and Tools Used
 
