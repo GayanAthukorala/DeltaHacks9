@@ -1,11 +1,11 @@
 # LocalLove - DeltaHacks 9
 
 This is our project for DeltaHacks 9 "The Hackathon for change" created by Ahren, Rhea, Gayan, and Youtso.
-Checkout our devpost here: https://devpost.com/software/local-love 
+Check out our Devpost here: https://devpost.com/software/local-love 
 
 ## Description
 
-Our app helps connect consumer to local retailers/restuarants by filtering out large corporations when they search for goods and services
+Our app helps connect consumers to local retailers/restaurants by filtering out large corporations when they search for goods and services
 
 ## Languages, Frameworks, and Tools Used
 
